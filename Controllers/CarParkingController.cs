@@ -20,16 +20,15 @@ namespace CarParkSystem.Controllers
 
         // POST: api/ParkingCount/CarParking/AddMinusCount/{id}
         [HttpPost("AddMinusCount/{id}")]
-        public async Task<IActionResult> AddMinusCount(int id, [FromBody] bool aDD)
+        public async Task<IActionResult> AddMinusCount(int id, [FromBody] UpdateCountRequest request)
         {
             var parkingCount = await _context.Parkings.FindAsync(id);
-
             if (parkingCount == null)
             {
                 return NotFound();
             }
 
-            if (aDD)
+            if (request.Add)
             {
                 parkingCount.TotalCount += 1;
             }
@@ -45,16 +44,15 @@ namespace CarParkSystem.Controllers
 
         // PUT: api/ParkingCount/CarParking/EditCount/{id}
         [HttpPut("EditCount/{id}")]
-        public async Task<IActionResult> EditCount(int id, [FromBody] int newCount)
+        public async Task<IActionResult> EditCount(int id, [FromBody] UpdateTotalCountRequest request)
         {
             var parkingCount = await _context.Parkings.FindAsync(id);
-
             if (parkingCount == null)
             {
                 return NotFound();
             }
 
-            parkingCount.TotalCount = newCount;
+            parkingCount.TotalCount = request.TotalCount;
             await _context.SaveChangesAsync();
 
             return Ok(parkingCount);
@@ -65,13 +63,12 @@ namespace CarParkSystem.Controllers
         public async Task<IActionResult> GetTotalCount(int id)
         {
             var parkingCount = await _context.Parkings.FindAsync(id);
-
             if (parkingCount == null)
             {
                 return NotFound();
             }
 
-            return Ok(parkingCount.TotalCount);
+            return Ok(new { totalCount = parkingCount.TotalCount });
         }
     }
 }
