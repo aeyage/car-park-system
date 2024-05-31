@@ -5,9 +5,9 @@ namespace CarParkSystem.Data
 {
     public class ParkingDbContext : DbContext
     {
-        public ParkingDbContext(DbContextOptions<ParkingDbContext> options) 
-            :base(options) { }
+        public ParkingDbContext(DbContextOptions<ParkingDbContext> options)
+            : base(options) { }
 
-        public DbSet<Parking> Parkings { get; set; }    
+        public DbSet<Parking> Parkings { get; set; }
     }
 }
