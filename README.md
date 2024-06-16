@@ -1,6 +1,6 @@
-# Car Park System API
+## Car Park System API
 
-ASP.NET Core Web API for managing a car park system. The API allows for updating parking counts, editing counts, and retrieving total counts.
+A basic ASP.NET Core Web API for managing a car park system. The API allows for updating parking counts, editing counts, and retrieving total counts.
 
 ## Prerequisites
 
@@ -12,8 +12,6 @@ Before you begin, ensure you have the following installed on your machine:
 
 ## Getting Started
 
-### Clone the Repository
-
 ```bash
-git clone https://github.com/your-username/car-park-system.git
+git clone https://github.com/aeyage/car-park-system.git
 cd car-park-system
